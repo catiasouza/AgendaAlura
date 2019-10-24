@@ -18,6 +18,7 @@
 		7524886D2362014C000F98CC /* MenuOpcoesAluno.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524886C2362014C000F98CC /* MenuOpcoesAluno.swift */; };
 		7524886F2362059D000F98CC /* Mensagem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524886E2362059D000F98CC /* Mensagem.swift */; };
 		75248871236212E3000F98CC /* localizacao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75248870236212E3000F98CC /* localizacao.swift */; };
+		7524887623621A99000F98CC /* MapaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524887523621A99000F98CC /* MapaViewController.swift */; };
 		A281001A1FD5C2F700E1BDF1 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28100191FD5C2F700E1BDF1 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		7524886C2362014C000F98CC /* MenuOpcoesAluno.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOpcoesAluno.swift; sourceTree = "<group>"; };
 		7524886E2362059D000F98CC /* Mensagem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mensagem.swift; sourceTree = "<group>"; };
 		75248870236212E3000F98CC /* localizacao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = localizacao.swift; sourceTree = "<group>"; };
+		7524887523621A99000F98CC /* MapaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaViewController.swift; sourceTree = "<group>"; };
 		A28100191FD5C2F700E1BDF1 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,6 +73,7 @@
 				03AA174D1FC84154003CB2B8 /* AppDelegate.swift */,
 				03AA17621FC8433E003CB2B8 /* Home */,
 				03AA17691FC84A2D003CB2B8 /* Alunos */,
+				7524887323621A19000F98CC /* Mapa */,
 				A28100181FD5C2E300E1BDF1 /* Componentes */,
 				03AA17511FC84154003CB2B8 /* Main.storyboard */,
 				03AA17571FC84154003CB2B8 /* Assets.xcassets */,
@@ -118,6 +121,22 @@
 			isa = PBXGroup;
 			children = (
 				03AA176C1FC8515A003CB2B8 /* AlunoViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7524887323621A19000F98CC /* Mapa */ = {
+			isa = PBXGroup;
+			children = (
+				7524887423621A59000F98CC /* Controller */,
+			);
+			path = Mapa;
+			sourceTree = "<group>";
+		};
+		7524887423621A59000F98CC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7524887523621A99000F98CC /* MapaViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -212,6 +231,7 @@
 				A281001A1FD5C2F700E1BDF1 /* ImagePicker.swift in Sources */,
 				03AA17681FC843B1003CB2B8 /* HomeTableViewCell.swift in Sources */,
 				75248871236212E3000F98CC /* localizacao.swift in Sources */,
+				7524887623621A99000F98CC /* MapaViewController.swift in Sources */,
 				7524886F2362059D000F98CC /* Mensagem.swift in Sources */,
 				03AA174E1FC84154003CB2B8 /* AppDelegate.swift in Sources */,
 			);
