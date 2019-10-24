@@ -2,12 +2,13 @@
 import UIKit
 import  CoreData
 
-class HomeTableViewController: UITableViewController, UISearchBarDelegate {
+class HomeTableViewController: UITableViewController, UISearchBarDelegate, NSFetchedResultsControllerDelegate{
     
     //MARK: - Variáveis
     
     let searchController = UISearchController(searchResultsController: nil)
     var gerenciadorResultados: NSFetchedResultsController<Aluno>?
+    
     var contexto:NSManagedObjectContext{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
@@ -33,6 +34,7 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate {
         pesquisaAluno.sortDescriptors = [ordenaNome]
         
         gerenciadorResultados = NSFetchedResultsController(fetchRequest: pesquisaAluno, managedObjectContext: contexto, sectionNameKeyPath: nil, cacheName: nil)
+        gerenciadorResultados?.delegate = self
         
         do{
             try gerenciadorResultados?.performFetch()
@@ -55,14 +57,11 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate {
         let celula = tableView.dequeueReusableCell(withIdentifier: "celula-aluno", for: indexPath) as! HomeTableViewCell
         
         guard let aluno = gerenciadorResultados?.fetchedObjects![indexPath.row]else
-        {return celula
+        {return celula}
+        celula.configuraCelula(aluno)
                 
-        }
-        celula.labelNomeDoAluno.text = aluno.nome
-        
-        if let imagenDoAluno = aluno.foto as? UIImage{
-            celula.imageAluno.image = imagenDoAluno
-        }
+      
+     
 
         return celula
     }
@@ -78,5 +77,16 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-
+    // MARK: - FetchedResultsControllerDelegate
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .delete:
+            break
+            //implementar
+        default:
+            tableView.reloadData()
+        }
+    }
 }
