@@ -8,6 +8,7 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate, NSFet
     
     let searchController = UISearchController(searchResultsController: nil)
     var gerenciadorResultados: NSFetchedResultsController<Aluno>?
+    var alunoViewController: AlunoViewController?
     
     var contexto:NSManagedObjectContext{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -23,6 +24,11 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate, NSFet
     
     // MARK: - Métodos
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editar"{
+            alunoViewController = segue.destination as? AlunoViewController
+        }
+    }
     func configuraSearch() {
         self.searchController.searchBar.delegate = self
         self.searchController.dimsBackgroundDuringPresentation = false
@@ -76,6 +82,10 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate, NSFet
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let alunoSelecionado = gerenciadorResultados?.fetchedObjects![indexPath.row] else { return  }
+        alunoViewController?.aluno = alunoSelecionado
     }
     // MARK: - FetchedResultsControllerDelegate
     
