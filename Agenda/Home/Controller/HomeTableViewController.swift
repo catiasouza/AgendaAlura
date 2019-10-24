@@ -49,7 +49,18 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate, NSFet
             print(error.localizedDescription)
         }
         
-        
+    }
+    //metodo abrir o longpress
+    @objc func abrirActionSheet(_ longPress: UILongPressGestureRecognizer){
+        if longPress.state == .began{
+            let menu = MenuOpcoesAluno().configuraMenuDeOpcoesAluno(completion: { (opcao) in
+                switch opcao{
+                case.sms:
+                    print("SMS")
+                }
+            })
+            self.present(menu, animated: true, completion: nil)
+        }
     }
     // MARK: - Table view data source
 
@@ -58,14 +69,16 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate, NSFet
             else { return 0 }
         return contadorListaDeAlunos
     }
-
+    //CRIA A CELULA
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let celula = tableView.dequeueReusableCell(withIdentifier: "celula-aluno", for: indexPath) as! HomeTableViewCell
+      //Cria o longpress dentro da celula
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(abrirActionSheet(_:)))
         
         guard let aluno = gerenciadorResultados?.fetchedObjects![indexPath.row]else
         {return celula}
         celula.configuraCelula(aluno)
-                
+        celula.addGestureRecognizer(longPress)
       
      
 
