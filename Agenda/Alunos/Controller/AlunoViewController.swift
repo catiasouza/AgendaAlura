@@ -1,12 +1,7 @@
-//
-//  AlunoViewController.swift
-//  Agenda
-//
-//  Created by Ândriu Coelho on 24/11/17.
-//  Copyright © 2017 Alura. All rights reserved.
-//
+
 
 import UIKit
+import CoreData
 
 class AlunoViewController: UIViewController, ImagePickerFotoSelecionada {
     
@@ -24,7 +19,10 @@ class AlunoViewController: UIViewController, ImagePickerFotoSelecionada {
     @IBOutlet weak var textFieldNota: UITextField!
     
     // MARK: - Atributos
-    
+    var contexto:NSManagedObjectContext{
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
     let imagePicker = ImagePicker()
     
     // MARK: - View Lifecycle
@@ -86,4 +84,20 @@ class AlunoViewController: UIViewController, ImagePickerFotoSelecionada {
     }
     
     
+    @IBAction func buttonSalvar(_ sender: UIButton) {
+        let aluno = Aluno(context: contexto)
+        aluno.nome = textFieldNome.text
+        aluno.endereco = textFieldEndereco.text
+        aluno.telefone = textFieldTelefone.text
+        aluno.site = textFieldSite.text
+        aluno.nota = (textFieldNota.text! as NSString).doubleValue
+        aluno.foto = imageAluno.image
+        
+        do {
+            try contexto.save()
+            navigationController?.popViewController(animated: true)
+        } catch  {
+            print(error.localizedDescription)
+        }
+    }
 }

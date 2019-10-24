@@ -1,10 +1,4 @@
-//
-//  AppDelegate.swift
-//  Agenda
-//
-//  Created by Ândriu Coelho on 24/11/17.
-//  Copyright © 2017 Alura. All rights reserved.
-//
+
 
 import UIKit
 import CoreData
