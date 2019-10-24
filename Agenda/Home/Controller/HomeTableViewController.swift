@@ -9,6 +9,7 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate, NSFet
     let searchController = UISearchController(searchResultsController: nil)
     var gerenciadorResultados: NSFetchedResultsController<Aluno>?
     var alunoViewController: AlunoViewController?
+    var mensagem = Mensagem()
     
     var contexto:NSManagedObjectContext{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -53,10 +54,14 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate, NSFet
     //metodo abrir o longpress
     @objc func abrirActionSheet(_ longPress: UILongPressGestureRecognizer){
         if longPress.state == .began{
+            guard let alunoSelecionado = gerenciadorResultados?.fetchedObjects?[(longPress.view?.tag)!] else { return  }
             let menu = MenuOpcoesAluno().configuraMenuDeOpcoesAluno(completion: { (opcao) in
                 switch opcao{
                 case.sms:
-                    print("SMS")
+                    if let componenteMessagem = self.mensagem.configuraSMS(alunoSelecionado){
+                        componenteMessagem.messageComposeDelegate = self.mensagem
+                        self.present(componenteMessagem, animated: true, completion: nil)
+                    }
                 }
             })
             self.present(menu, animated: true, completion: nil)
