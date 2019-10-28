@@ -1,13 +1,19 @@
-//
-//  AutenticacaoLocal.swift
-//  Agenda
-//
-//  Created by Catia Miranda de Souza on 28/10/19.
-//  Copyright © 2019 Alura. All rights reserved.
-//
+
 
 import UIKit
+import LocalAuthentication
 
 class AutenticacaoLocal: NSObject {
-
+    
+    func autorizaUsuario(completion:@escaping(_ autenticacado:Bool)-> Void){
+        
+        var error: NSError?
+        let contexto = LAContext()
+        if contexto.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error){
+            contexto.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "é necessario autenticacao para apagar um aluno", reply: { (resposta, erro) in
+                completion(resposta)
+            })
+            
+        }
+    }
 }

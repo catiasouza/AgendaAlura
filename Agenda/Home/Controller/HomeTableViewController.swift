@@ -117,18 +117,26 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate, NSFet
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 85
     }
-
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            guard let alunoSelecionado = gerenciadorResultados?.fetchedObjects![indexPath.row] else{ return}
-            contexto.delete(alunoSelecionado)
-            do{
-                try contexto.save()
-                
-            }catch{
-                print(error.localizedDescription)
-            }
-           
+            AutenticacaoLocal().autorizaUsuario(completion: {(autenticado)in
+                if autenticado{
+                    DispatchQueue.main.async {
+                        guard let alunoSelecionado = self.gerenciadorResultados?.fetchedObjects![indexPath.row] else{ return}
+                        self.contexto.delete(alunoSelecionado)
+                        do{
+                            try self.contexto.save()
+                            
+                        }catch{
+                            print(error.localizedDescription)
+                        }
+                    }
+                    
+                    
+                }
+            })
+            
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
