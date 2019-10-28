@@ -4,26 +4,32 @@ import UIKit
 
 class CalculaMediaAPI: NSObject {
 
-    func calculaMediaGeralDosAlunos(){
+    func calculaMediaGeralDosAlunos(alunos: Array<Aluno>, sucesso:@escaping(_ dicionarioDeMedias:Dictionary<String, Any>) -> Void, falha:@escaping(_ error:Error) -> Void){
         
-        //url end do postmain no POST
+       
         guard let url = URL(string: "https://www.caelum.com.br/mobile")else{return}
-        //CORPO DA API
       
         var listaDeAlunos: Array<Dictionary<String, Any>> = []
         var json: Dictionary<String, Any> = [:]
         
-        //INFORMACOES QUE ESTA NO POSTMAIN
-       let dicionarioDeAlunos = [
-            "id": "1",
-            "nome":"Catia",
-            "endereco": "Rua Cotonificio",
-            "telefone": "9999-9999",
-            "site": "www.alura.com.br",
-            "nota": "8"
-        ]
-        listaDeAlunos.append(dicionarioDeAlunos as [String: Any])
-        json = [
+        for aluno in alunos{
+            
+            guard let nome = aluno.nome else { break }
+            guard let endereco = aluno.endereco else { break }
+            guard let telefone = aluno.telefone else { break }
+            guard let site = aluno.site else { break }
+            
+            let dicionarioDeAlunos = [
+                      "id": "\(aluno.objectID)",
+                      "nome":nome,
+                      "endereco": endereco,
+                      "telefone": telefone,
+                      "site": site,
+                      "nota": String(aluno.nota)
+            ]
+                  listaDeAlunos.append(dicionarioDeAlunos as [String: Any])
+        }
+                json = [
             "list": [
                 [ "aluno": listaDeAlunos]
             ]
@@ -39,11 +45,11 @@ class CalculaMediaAPI: NSObject {
             let task = URLSession.shared.dataTask(with: requisicao) { (data, response, error) in
                 if error == nil{
                     do{
-                        let dicionario = try JSONSerialization.jsonObject(with: data!, options: [])
-                        print(dicionario)
+                        let dicionario = try JSONSerialization.jsonObject(with: data!, options: []) as! Dictionary<String, Any>
+                        sucesso(dicionario)
+                       
                     }catch{
-                        print(error.localizedDescription)
-                    }
+                        falha(error)}
                     
                 }
             }
