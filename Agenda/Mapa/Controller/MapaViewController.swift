@@ -2,7 +2,7 @@
 import UIKit
 import MapKit
 
-class MapaViewController: UIViewController {
+class MapaViewController: UIViewController, CLLocationManagerDelegate{
     
     //MARK: - IBOutlet
     
@@ -12,15 +12,18 @@ class MapaViewController: UIViewController {
     
     var aluno: Aluno?
     lazy var localizacao = Localizacao()
+    lazy var gereciadorDeLocalizacao = CLLocationManager()
     
     //MARK: - ViewLifecicle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = getTitulo()
+        verficaLocalizacaoDoUsuario()
         localizacaoInicial()
         localizarAluno()
         mapa.delegate = localizacao
+        gereciadorDeLocalizacao.delegate = self
         
     }
     
@@ -28,6 +31,27 @@ class MapaViewController: UIViewController {
     
     func getTitulo() -> String {
         return "Localizar Alunos"
+    }
+    func verficaLocalizacaoDoUsuario(){
+        if CLLocationManager.locationServicesEnabled(){
+            switch CLLocationManager.authorizationStatus() {
+                
+            case .authorizedWhenInUse:
+                let botao = Localizacao().configuraBotaoLocalizacao(mapa: mapa)
+                mapa.addSubview(botao)
+                gereciadorDeLocalizacao.startUpdatingLocation()
+                
+                break
+            case .notDetermined:
+                   gereciadorDeLocalizacao.requestWhenInUseAuthorization()
+                break
+                
+            case .denied:
+                break
+            default:
+                break
+            }
+        }
     }
     func localizacaoInicial(){
         Localizacao().converteEnderecoEmCoordenadas(endereco: "Caelum - SP") { (localizacaoEncontrada) in
@@ -49,6 +73,19 @@ class MapaViewController: UIViewController {
             
         }
     }
-   
+    // MARK: - CLLocationManagerDelegate
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse:
+            let botao = Localizacao().configuraBotaoLocalizacao(mapa: mapa)
+            mapa.addSubview(botao)
+            gereciadorDeLocalizacao.startUpdatingLocation()
+        default:
+            break
+        }
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations:[CLLocation]){
+        print(locations)
+    }
 }
 

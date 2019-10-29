@@ -21,6 +21,12 @@ class Localizacao: NSObject, MKMapViewDelegate {
        
            return pino
        }
+    func configuraBotaoLocalizacao(mapa: MKMapView) -> MKUserTrackingButton{
+        let botao = MKUserTrackingButton(mapView: mapa)
+        botao.frame.origin.x = 10
+        botao.frame.origin.y = 10
+        return botao
+    }
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
         if annotation is Pino{
             let annotaticionView = annotation as! Pino
