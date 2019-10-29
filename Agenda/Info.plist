@@ -6,6 +6,56 @@
 	<string>Este aplicativo precisa utilizar sua localizacao.</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
+	<key>UIApplicationShortcuttitems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcuticonTypeCompose</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>cadastrar aluno</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>CadastrarAluno</string>
+		</dict>
+	</array>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string></string>
+	</array>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string></string>
+			</array>
+			<key>UIPrerenderedIcon</key>
+			<false/>
+		</dict>
+		<key>UINewsstandIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string></string>
+			</array>
+			<key>UINewsstandBindingType</key>
+			<string>UINewsstandBindingTypeMagazine</string>
+			<key>UINewsstandBindingEdge</key>
+			<string>UINewsstandBindingEdgeLeft</string>
+		</dict>
+	</dict>
+	<key>CFBundleIconFile</key>
+	<string></string>
+	<key>CFBundleSignature</key>
+	<string></string>
+	<key>UIAplication</key>
+	<string></string>
+	<key>NSHumanReadableCopyright</key>
+	<string></string>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
+	<key>CFBundleDisplayName</key>
+	<string></string>
 	<key>NSCameraUsageDescription</key>
 	<string>Este aplicativo precisa utilizar a camera para preencher o formulario</string>
 	<key>CFBundleDevelopmentRegion</key>
