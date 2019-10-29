@@ -1,6 +1,7 @@
 
 import UIKit
 import  CoreData
+import SafariServices
 
 class HomeTableViewController: UITableViewController, UISearchBarDelegate, NSFetchedResultsControllerDelegate{
     
@@ -113,7 +114,8 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate, NSFet
                             urlFormatada = String(format: "http://%@", urlFormatada)
                     }
                         guard let url = URL(string: urlFormatada)else{return}
-                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        let safariViewController = SFSafariViewController(url: url)
+                        self.present(safariViewController, animated: true, completion: nil)
                     }
                     break
                 }
