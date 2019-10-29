@@ -89,7 +89,7 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate, NSFet
                 case.waze:
                     if UIApplication.shared.canOpenURL(URL(string: "waze://")!){
                         guard let enderecoDoAluno = alunoSelecionado.endereco else { return  }
-                        localizacao().converteEnderecoEmCoordenadas(endereco: enderecoDoAluno, local: { (localizacaoEncontrada) in
+                        Localizacao().converteEnderecoEmCoordenadas(endereco: enderecoDoAluno, local: { (localizacaoEncontrada) in
                             
                             let latitude = String(describing: localizacaoEncontrada.location!.coordinate.latitude)
                             let longitude = String(describing: localizacaoEncontrada.location!.coordinate.longitude)

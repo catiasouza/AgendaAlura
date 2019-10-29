@@ -11,6 +11,7 @@ class MapaViewController: UIViewController {
     //MARK: -Variavel
     
     var aluno: Aluno?
+    lazy var localizacao = Localizacao()
     
     //MARK: - ViewLifecicle
     
@@ -19,6 +20,7 @@ class MapaViewController: UIViewController {
         self.navigationItem.title = getTitulo()
         localizacaoInicial()
         localizarAluno()
+        mapa.delegate = localizacao
         
     }
     
@@ -28,8 +30,8 @@ class MapaViewController: UIViewController {
         return "Localizar Alunos"
     }
     func localizacaoInicial(){
-        localizacao().converteEnderecoEmCoordenadas(endereco: "Caelum - SP") { (localizacaoEncontrada) in
-            let pino = self.configuraPino(titulo: "Caelum", localizacao: localizacaoEncontrada)
+        Localizacao().converteEnderecoEmCoordenadas(endereco: "Caelum - SP") { (localizacaoEncontrada) in
+            let pino = Localizacao().configuraPino(titulo: "Caelum", localizacao: localizacaoEncontrada, cor: .black, icone: nil)
             let regiao = MKCoordinateRegionMakeWithDistance(pino.coordinate, 5000, 5000)
             self.mapa.setRegion(regiao, animated: true)
             self.mapa.addAnnotation(pino)
@@ -39,21 +41,14 @@ class MapaViewController: UIViewController {
     func localizarAluno(){
         if let aluno = aluno {
             
-            localizacao().converteEnderecoEmCoordenadas(endereco: aluno.endereco!) { (localizacaoEncontrada
+            Localizacao().converteEnderecoEmCoordenadas(endereco: aluno.endereco!) { (localizacaoEncontrada
                 ) in
-                let pino = self.configuraPino(titulo: aluno.nome!, localizacao: localizacaoEncontrada)
+                let pino = Localizacao().configuraPino(titulo: aluno.nome!, localizacao: localizacaoEncontrada, cor: nil, icone: nil)
                 self.mapa.addAnnotation(pino)
             }
             
         }
     }
-    func configuraPino(titulo: String, localizacao: CLPlacemark) -> MKPointAnnotation{
-        let pino = MKPointAnnotation()
-        pino.title = titulo
-        pino.coordinate = localizacao.location!.coordinate
-        
-        
-        return pino
-    }
+   
 }
 

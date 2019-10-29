@@ -22,6 +22,7 @@
 		7524887A23622555000F98CC /* CalculaMediaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524887923622555000F98CC /* CalculaMediaAPI.swift */; };
 		7524887C23672471000F98CC /* Notificacoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524887B23672471000F98CC /* Notificacoes.swift */; };
 		7524887E23676DAE000F98CC /* AutenticacaoLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524887D23676DAE000F98CC /* AutenticacaoLocal.swift */; };
+		75248882236869A0000F98CC /* Pino.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75248881236869A0000F98CC /* Pino.swift */; };
 		A281001A1FD5C2F700E1BDF1 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28100191FD5C2F700E1BDF1 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		7524887923622555000F98CC /* CalculaMediaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculaMediaAPI.swift; sourceTree = "<group>"; };
 		7524887B23672471000F98CC /* Notificacoes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notificacoes.swift; sourceTree = "<group>"; };
 		7524887D23676DAE000F98CC /* AutenticacaoLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutenticacaoLocal.swift; sourceTree = "<group>"; };
+		75248881236869A0000F98CC /* Pino.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pino.swift; sourceTree = "<group>"; };
 		A28100191FD5C2F700E1BDF1 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +137,7 @@
 		7524887323621A19000F98CC /* Mapa */ = {
 			isa = PBXGroup;
 			children = (
+				7524888023686974000F98CC /* Model */,
 				7524887423621A59000F98CC /* Controller */,
 			);
 			path = Mapa;
@@ -152,6 +155,14 @@
 			isa = PBXGroup;
 			children = (
 				7524887923622555000F98CC /* CalculaMediaAPI.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7524888023686974000F98CC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				75248881236869A0000F98CC /* Pino.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -242,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03AA176D1FC8515A003CB2B8 /* AlunoViewController.swift in Sources */,
+				75248882236869A0000F98CC /* Pino.swift in Sources */,
 				03AA17661FC84353003CB2B8 /* HomeTableViewController.swift in Sources */,
 				7524886D2362014C000F98CC /* MenuOpcoesAluno.swift in Sources */,
 				03AA17561FC84154003CB2B8 /* Agenda.xcdatamodeld in Sources */,
