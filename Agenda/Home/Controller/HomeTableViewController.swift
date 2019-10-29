@@ -119,6 +119,7 @@ class HomeTableViewController: UITableViewController, UISearchBarDelegate, NSFet
     //CRIA A CELULA
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let celula = tableView.dequeueReusableCell(withIdentifier: "celula-aluno", for: indexPath) as! HomeTableViewCell
+        celula.tag = indexPath.row
       //Cria o longpress dentro da celula
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(abrirActionSheet(_:)))
         
