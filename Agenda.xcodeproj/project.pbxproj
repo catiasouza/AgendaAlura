@@ -23,6 +23,12 @@
 		7524887C23672471000F98CC /* Notificacoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524887B23672471000F98CC /* Notificacoes.swift */; };
 		7524887E23676DAE000F98CC /* AutenticacaoLocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524887D23676DAE000F98CC /* AutenticacaoLocal.swift */; };
 		75248882236869A0000F98CC /* Pino.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75248881236869A0000F98CC /* Pino.swift */; };
+		752488862368C5F5000F98CC /* AlunoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752488852368C5F5000F98CC /* AlunoApi.swift */; };
+		752488882369C80B000F98CC /* Repositorio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752488872369C80B000F98CC /* Repositorio.swift */; };
+		7524888A2369C9C3000F98CC /* AlunoDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752488892369C9C3000F98CC /* AlunoDAO.swift */; };
+		7524888C236A17E9000F98CC /* LigacaoTelefonica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524888B236A17E9000F98CC /* LigacaoTelefonica.swift */; };
+		7524888E236A19FD000F98CC /* Safari.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524888D236A19FD000F98CC /* Safari.swift */; };
+		75248890236A1B41000F98CC /* Filtro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7524888F236A1B41000F98CC /* Filtro.swift */; };
 		9C5827F1A462B14F4EB4A4FC /* Pods_Agenda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F36CF1AEF471A2569771F7 /* Pods_Agenda.framework */; };
 		A281001A1FD5C2F700E1BDF1 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28100191FD5C2F700E1BDF1 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +54,12 @@
 		7524887B23672471000F98CC /* Notificacoes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notificacoes.swift; sourceTree = "<group>"; };
 		7524887D23676DAE000F98CC /* AutenticacaoLocal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutenticacaoLocal.swift; sourceTree = "<group>"; };
 		75248881236869A0000F98CC /* Pino.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pino.swift; sourceTree = "<group>"; };
+		752488852368C5F5000F98CC /* AlunoApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlunoApi.swift; sourceTree = "<group>"; };
+		752488872369C80B000F98CC /* Repositorio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repositorio.swift; sourceTree = "<group>"; };
+		752488892369C9C3000F98CC /* AlunoDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlunoDAO.swift; sourceTree = "<group>"; };
+		7524888B236A17E9000F98CC /* LigacaoTelefonica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LigacaoTelefonica.swift; sourceTree = "<group>"; };
+		7524888D236A19FD000F98CC /* Safari.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Safari.swift; sourceTree = "<group>"; };
+		7524888F236A1B41000F98CC /* Filtro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filtro.swift; sourceTree = "<group>"; };
 		A28100191FD5C2F700E1BDF1 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		D64ECA2CCA48DAC8F8497B46 /* Pods-Agenda.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agenda.release.xcconfig"; path = "Target Support Files/Pods-Agenda/Pods-Agenda.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,6 +140,7 @@
 		03AA17691FC84A2D003CB2B8 /* Alunos */ = {
 			isa = PBXGroup;
 			children = (
+				752488842368C5BD000F98CC /* Model */,
 				03AA176A1FC84A2D003CB2B8 /* Controller */,
 			);
 			path = Alunos;
@@ -174,13 +187,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		752488842368C5BD000F98CC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				752488852368C5F5000F98CC /* AlunoApi.swift */,
+				752488872369C80B000F98CC /* Repositorio.swift */,
+				752488892369C9C3000F98CC /* AlunoDAO.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		998560CF692AA9C6249D31D5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				497A162048F6B5136DAC47A8 /* Pods-Agenda.debug.xcconfig */,
 				D64ECA2CCA48DAC8F8497B46 /* Pods-Agenda.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -193,6 +215,9 @@
 				75248870236212E3000F98CC /* localizacao.swift */,
 				7524887B23672471000F98CC /* Notificacoes.swift */,
 				7524887D23676DAE000F98CC /* AutenticacaoLocal.swift */,
+				7524888B236A17E9000F98CC /* LigacaoTelefonica.swift */,
+				7524888D236A19FD000F98CC /* Safari.swift */,
+				7524888F236A1B41000F98CC /* Filtro.swift */,
 			);
 			path = Componentes;
 			sourceTree = "<group>";
@@ -325,16 +350,22 @@
 				03AA176D1FC8515A003CB2B8 /* AlunoViewController.swift in Sources */,
 				75248882236869A0000F98CC /* Pino.swift in Sources */,
 				03AA17661FC84353003CB2B8 /* HomeTableViewController.swift in Sources */,
+				75248890236A1B41000F98CC /* Filtro.swift in Sources */,
+				7524888A2369C9C3000F98CC /* AlunoDAO.swift in Sources */,
 				7524886D2362014C000F98CC /* MenuOpcoesAluno.swift in Sources */,
 				03AA17561FC84154003CB2B8 /* Agenda.xcdatamodeld in Sources */,
 				7524887A23622555000F98CC /* CalculaMediaAPI.swift in Sources */,
 				A281001A1FD5C2F700E1BDF1 /* ImagePicker.swift in Sources */,
 				03AA17681FC843B1003CB2B8 /* HomeTableViewCell.swift in Sources */,
+				7524888E236A19FD000F98CC /* Safari.swift in Sources */,
 				75248871236212E3000F98CC /* localizacao.swift in Sources */,
 				7524887C23672471000F98CC /* Notificacoes.swift in Sources */,
 				7524887623621A99000F98CC /* MapaViewController.swift in Sources */,
+				7524888C236A17E9000F98CC /* LigacaoTelefonica.swift in Sources */,
+				752488882369C80B000F98CC /* Repositorio.swift in Sources */,
 				7524886F2362059D000F98CC /* Mensagem.swift in Sources */,
 				03AA174E1FC84154003CB2B8 /* AppDelegate.swift in Sources */,
+				752488862368C5F5000F98CC /* AlunoApi.swift in Sources */,
 				7524887E23676DAE000F98CC /* AutenticacaoLocal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
